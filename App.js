@@ -11,40 +11,52 @@ const Home = ({ navigation }) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: 'red',
+        backgroundColor: '#F27D52',
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-      <TouchableOpacity onPress={() => navigation.navigate('Popup')}>
-        <View>
-          <Text style={{ color: 'black' }}>show pop up</Text>
-        </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Popup')}
+        style={{
+          backgroundColor: '#F2E1AC',
+          paddingHorizontal: 20,
+          paddingVertical: 10,
+          borderRadius: 10
+        }}>
+        <Text style={{ color: 'black' }}>show pop up</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
 };
 
-const Popup = () => {
+const Popup = ({ navigation }) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={{
+        // flex: 1,
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: SCREEN_HEIGHT * 0.8,
+        backgroundColor: '#F2E1AC'
+      }}>
       <View
         style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          top: SCREEN_HEIGHT * 0.8,
-          backgroundColor: 'white'
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
         }}>
         <TouchableOpacity
+          onPress={() => navigation.goBack()}
           style={{
-            justifyContent: 'center',
-            alignItems: 'center'
+            backgroundColor: '#F26E22',
+            paddingHorizontal: 20,
+            paddingVertical: 10,
+            borderRadius: 10
           }}>
-          <View>
-            <Text>Subscribe 🤪🤐😇</Text>
-          </View>
+          <Text>Subscribe</Text>
         </TouchableOpacity>
       </View>
     </View>
