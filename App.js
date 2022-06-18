@@ -20,7 +20,7 @@ const Popup = ({ navigation }) => {
   return (
     <View
       style={{
-        // flex: 1,
+        flex: 1,
         position: 'absolute',
         left: 0,
         right: 0,
@@ -28,6 +28,7 @@ const Popup = ({ navigation }) => {
         top: SCREEN_HEIGHT * 0.8,
         backgroundColor: '#F2E1AC'
       }}>
+      {/* InnerContainer */}
       <View
         style={{
           flex: 1,
@@ -48,7 +49,6 @@ const App = () => {
       <Stack.Navigator
         cardStyle={{ backgroundColor: 'transparent' }}
         screenOptions={{
-          gestureEnabled: true,
           headerShown: false
         }}>
         <Stack.Screen name={`Home`} component={Home} />
@@ -56,15 +56,12 @@ const App = () => {
           name={`Popup`}
           component={Popup}
           options={{
-            headerShown: false,
             cardStyle: {
               backgroundColor: 'transparent'
             },
-            cardOverlayEnabled: true,
-            gestureDirection: 'vertical',
+            presentation: 'modal',
             gestureResponseDistance: SCREEN_HEIGHT * 0.9,
-            gestureVelocityImpact: 0.5, // default 0.3
-            presentation: 'modal'
+            gestureVelocityImpact: 0.5 // default 0.3,
           }}
         />
       </Stack.Navigator>
