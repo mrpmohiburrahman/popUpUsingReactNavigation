@@ -1,31 +1,17 @@
-import { Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { Text, View, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
+
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const Stack = createStackNavigator();
 
 const Home = ({ navigation }) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#F27D52',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Popup')}
-        style={{
-          backgroundColor: '#F2E1AC',
-          paddingHorizontal: 20,
-          paddingVertical: 10,
-          borderRadius: 10
-        }}>
-        <Text style={{ color: 'black' }}>show pop up</Text>
+    <View style={style.homeContainer}>
+      <TouchableOpacity onPress={() => navigation.navigate('Popup')} style={style.homeButton}>
+        <Text>show pop up</Text>
       </TouchableOpacity>
-      <StatusBar style="auto" />
     </View>
   );
 };
@@ -48,14 +34,7 @@ const Popup = ({ navigation }) => {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={{
-            backgroundColor: '#F26E22',
-            paddingHorizontal: 20,
-            paddingVertical: 10,
-            borderRadius: 10
-          }}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={style.popupButton}>
           <Text>Subscribe</Text>
         </TouchableOpacity>
       </View>
@@ -93,3 +72,24 @@ const App = () => {
   );
 };
 export default App;
+
+const style = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+    backgroundColor: '#F27D52',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  homeButton: {
+    backgroundColor: '#F2E1AC',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 10
+  },
+  popupButton: {
+    backgroundColor: '#F26E22',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 10
+  }
+});
